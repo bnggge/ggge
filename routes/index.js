@@ -1,21 +1,22 @@
 var express = require('express');
 var passport = require('passport');
-var Account = require('../models/account');
+var User = require('../models/user');
 var router = express.Router();
 
 
-router.get('/', function (req, res) {
+router.get('/', function (req, res, next) {
     res.render('index', { user : req.user });
 });
 
-router.get('/signup', function(req, res) {
+router.get('/signup', function(req, res, next) {
     res.render('signup', { });
 });
 
-router.post('/signup', function(req, res) {
-    Account.signup(new Account({ username : req.body.username }), req.body.password, function(err, account) {
+//TODO: Throw it in model.
+router.post('/signup', function(req, res, next) {
+    User.register(new User({ username : req.body.username, firstname: req.body.firstname, lastname: req.body.lastname, email: req.body.email, phone : req.body.phone }), req.body.password, function(err, account) {
         if (err) {
-            return res.render('signup', { account : account });
+            return res.render('signup', { user : user });
         }
 
         passport.authenticate('local')(req, res, function () {
@@ -24,20 +25,20 @@ router.post('/signup', function(req, res) {
     });
 });
 
-router.get('/login', function(req, res) {
+router.get('/login', function(req, res, next) {
     res.render('login', { user : req.user });
 });
 
-router.post('/login', passport.authenticate('local'), function(req, res) {
+router.post('/login', passport.authenticate('local'), function(req, res, next) {
     res.redirect('/');
 });
 
-router.get('/logout', function(req, res) {
+router.get('/logout', function(req, res, next) {
     req.logout();
     res.redirect('/');
 });
 
-router.get('/ping', function(req, res){
+router.get('/ping', function(req, res, next){
     res.status(200).send("pong!");
 });
 
