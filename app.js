@@ -9,6 +9,9 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
+var TwitterStrategy = require('passport-twitter').Strategy;
 var MongoStore = require('connect-mongo')(session);
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -49,6 +52,40 @@ app.use('/users', users);
 
 var User = require('./models/user');
 passport.use(User.createStrategy());
+passport.use(new GoogleStrategy({
+    clientID: config.auth.google.id,
+    clientSecret: config.auth.google.secret,
+    callbackURL: "http://ggge.eu/auth/google/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
+  }
+));
+passport.use(new FacebookStrategy({
+    clientID: config.auth.facebook.id,
+    clientSecret: config.auth.facebook.secret,
+    callbackURL: "http://ggge.eu/auth/facebook/callback",
+    enableProof: false
+  },
+  function(accessToken, refreshToken, profile, done) {
+    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
+  }
+));
+passport.use(new TwitterStrategy({
+    consumerKey: config.auth.twitter.key,
+    consumerSecret: config.auth.twitter.secret,
+    callbackURL: "http://ggge.eu/auth/twitter/callback"
+  },
+  function(token, tokenSecret, profile, done) {
+    User.findOrCreate({ twitterId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
+  }
+));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
