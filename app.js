@@ -59,7 +59,7 @@ passport.use(new GoogleStrategy({
   },
   function(accessToken, refreshToken, profile, done) {
     console.log(profile);
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+    User.findOrCreate({ email: profile.emails[0].value, photo: profile.photos[0].value, name: profile.displayName, googleId: profile.id }, function (err, user) {
       return done(err, user);
     });
   }
@@ -73,7 +73,7 @@ passport.use(new FacebookStrategy({
   },
   function(accessToken, refreshToken, profile, done) {
     console.log(profile);
-    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+    User.findOrCreate({ email: profile.emails[0].value, photo: profile.photos[0].value, name: profile.displayName, facebookId: profile.id }, function (err, user) {
       return done(err, user);
     });
   }
@@ -85,7 +85,7 @@ passport.use(new TwitterStrategy({
   },
   function(token, tokenSecret, profile, done) {
     console.log(profile);
-    User.findOrCreate({ twitterId: profile.id }, function (err, user) {
+    User.findOrCreate({ username: profile.username, photo: profile.photos[0].value, name: profile.displayName, twitterId: profile.id }, function (err, user) {
       return done(err, user);
     });
   }
