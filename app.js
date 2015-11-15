@@ -58,6 +58,7 @@ passport.use(new GoogleStrategy({
     callbackURL: "http://ggge.eu/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
+    console.log(profile);
     User.findOrCreate({ googleId: profile.id }, function (err, user) {
       return done(err, user);
     });
@@ -70,6 +71,7 @@ passport.use(new FacebookStrategy({
     enableProof: false
   },
   function(accessToken, refreshToken, profile, done) {
+    console.log(profile);
     User.findOrCreate({ facebookId: profile.id }, function (err, user) {
       return done(err, user);
     });
@@ -81,6 +83,7 @@ passport.use(new TwitterStrategy({
     callbackURL: "http://ggge.eu/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
+    console.log(profile);
     User.findOrCreate({ twitterId: profile.id }, function (err, user) {
       return done(err, user);
     });
