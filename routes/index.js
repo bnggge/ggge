@@ -39,7 +39,7 @@ router.get('/logout', function(req, res, next) {
 });
 
 router.get('/auth/google',
-  passport.authenticate('google', { scope: 'https://www.googleapis.com/oauth2/v2/userinfo.email' }));
+  passport.authenticate('google', { scope: 'https://www.googleapis.com/auth/userinfo.email' }));
 
 router.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
@@ -57,7 +57,7 @@ router.get('/auth/twitter/callback',
     res.redirect('/');
   });
 router.get('/auth/facebook',
-  passport.authenticate('facebook'));
+  passport.authenticate('facebook', { scope: 'email' }));
 
 router.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/login' }),

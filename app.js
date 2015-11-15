@@ -68,6 +68,7 @@ passport.use(new FacebookStrategy({
     clientID: config.auth.facebook.id,
     clientSecret: config.auth.facebook.secret,
     callbackURL: "http://ggge.eu/auth/facebook/callback",
+    profileFields: ['id', 'email', 'picture', 'name', 'displayName'],
     enableProof: false
   },
   function(accessToken, refreshToken, profile, done) {
