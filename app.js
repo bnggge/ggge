@@ -51,6 +51,8 @@ app.use('/', routes);
 app.use('/users', users);
 
 var User = require('./models/user');
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 passport.use(User.createStrategy());
 passport.use(new GoogleStrategy({
     clientID: config.auth.google.id,
@@ -90,8 +92,7 @@ passport.use(new TwitterStrategy({
     });
   }
 ));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+
 
 
 // catch 404 and forward to error handler
