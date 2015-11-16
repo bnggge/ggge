@@ -61,7 +61,7 @@ passport.use(new GoogleStrategy({
   },
   function(accessToken, refreshToken, profile, done) {
     console.log(profile);
-    User.findOrCreate({ googleId: profile.id }, { email: profile.emails[0].value, photo: profile.photos[0].value, name: profile.displayName }, { options: { upsert: true } }, function (err, user) {
+    User.findOrCreate({ googleId: profile.id }, { username: profile.emails[0].value, email: profile.emails[0].value, photo: profile.photos[0].value, name: profile.displayName }, { options: { upsert: true } }, function (err, user) {
       return done(err, user);
     });
   }
@@ -75,7 +75,7 @@ passport.use(new FacebookStrategy({
   },
   function(accessToken, refreshToken, profile, done) {
     console.log(profile);
-    User.findOrCreate( { facebookId: profile.id }, { email: profile.emails[0].value, photo: profile.photos[0].value, name: profile.displayName }, { options: { upsert: true } }, function (err, user) {
+    User.findOrCreate( { facebookId: profile.id }, { username: profile.emails[0].value, email: profile.emails[0].value, photo: profile.photos[0].value, name: profile.displayName }, { options: { upsert: true } }, function (err, user) {
       return done(err, user);
     });
   }
