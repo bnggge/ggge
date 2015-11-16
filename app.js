@@ -99,6 +99,11 @@ passport.use(new TwitterStrategy({
         return done(err, user);
       });
     }
+    else {
+      User.findOrCreate( { _id: req.user.id }, { twitterId: profile.id }, { options: { upsert: true } } , function (err, user) {
+        return done(err, user);
+      });
+    }
   }
 ));
 
