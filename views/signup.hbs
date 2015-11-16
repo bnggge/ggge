@@ -1,34 +1,35 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 <div class="container">
-        <form class="form-signin" action="/signup" method="post">
+        <form class="form-signin" action="/signup" method="post" autocomplete="on">
             <h2 class="form-signin-heading text-center">Signup</h2>
 
             <label for="username" class="sr-only">Username</label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
+            <input type="text" id="username" name="username" class="form-control" placeholder="jdoe">
 
-            <label for="firstname" class="sr-only">Firstname</label>
-            <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Firstname" autofocus>
+            <label for="name" class="sr-only">Firstname</label>
+            <input type="text" id="firstname" name="firstname" class="form-control" placeholder="John Doe">
 
-            <label for="lastname" class="sr-only">Lastname</label>
-            <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Lastname" autofocus>
+            <label for="photo" class="sr-only">Photo (URL)</label>
+            <input type="url" id="photo" name="photo" class="form-control" placeholder="http://www.example.com/photo.jpg" >
 
             <label for="email" class="sr-only">E-mail</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="E-mail" required>
+            <input type="email" id="email" name="email" class="form-control" placeholder="john@doe.com" required autofocus>
 
             <label for="phone" class="sr-only">Phone</label>
-            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Phone (i. e. +49 30 123456)" required>
+            <input type="tel" id="phone" name="phone" class="form-control" placeholder="+49 30 123456"  >
 
             <label for="password" class="sr-only">Password</label>
-            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+            <input type="password" name="password" id="password" class="form-control" placeholder="*********" required>
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Signup</button>
           </form>
 
           <div class="row">
             <div class="center-block text-center">
-                <a href="/oauth/facebook">Login with Facebook</a> |
-                <a href="/oauth/twitter">Login with Twitter</a>
+                <a href="/auth/facebook">Signup with Facebook</a> |
+                <a href="/auth/twitter">Signup with Twitter</a>
+                <a href="/auth/google">Signup with Google</a>
             </div>
         </div>
     </div>

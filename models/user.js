@@ -5,8 +5,8 @@ var findOrCreate = require('mongoose-findorcreate');
 
 var User = new Schema({
     username: String,
-    firstname: String,
-    lastname: String,
+    name: String,
+    photo: String,
     password: String,
     phone: String,
     email: String,
@@ -15,7 +15,7 @@ var User = new Schema({
     googleId: String
 });
 
-User.plugin(passportLocalMongoose);
+User.plugin(passportLocalMongoose, {usernameField: 'email', usernameQueryFields: ['username', 'twitterId', 'facebookId', 'googleId'], populateFields: ['username', 'photo', 'name', 'twitterId', 'facebookId', 'googleId']});
 User.plugin(findOrCreate);
 
 module.exports = mongoose.model('User', User);
