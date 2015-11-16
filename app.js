@@ -57,13 +57,16 @@ passport.use(User.createStrategy());
 passport.use(new GoogleStrategy({
     clientID: config.auth.google.id,
     clientSecret: config.auth.google.secret,
-    callbackURL: "http://ggge.eu/auth/google/callback"
+    callbackURL: "http://ggge.eu/auth/google/callback",
+    passReqToCallback: true
   },
-  function(accessToken, refreshToken, profile, done) {
-    console.log(profile);
-    User.findOrCreate({ googleId: profile.id }, { username: profile.emails[0].value, email: profile.emails[0].value, photo: profile.photos[0].value, name: profile.displayName }, { options: { upsert: true } }, function (err, user) {
-      return done(err, user);
-    });
+  function(req, accessToken, refreshToken, profile, done) {
+    console.log(req);
+    if (!req.user) {
+      User.findOrCreate({ googleId: profile.id }, { username: profile.emails[0].value, email: profile.emails[0].value, photo: profile.photos[0].value, name: profile.displayName }, { options: { upsert: true } }, function (err, user) {
+        return done(err, user);
+     });
+    }
   }
 ));
 passport.use(new FacebookStrategy({
@@ -71,25 +74,31 @@ passport.use(new FacebookStrategy({
     clientSecret: config.auth.facebook.secret,
     callbackURL: "http://ggge.eu/auth/facebook/callback",
     profileFields: ['id', 'email', 'picture', 'name', 'displayName'],
-    enableProof: false
+    enableProof: false,
+    passReqToCallback: true
   },
-  function(accessToken, refreshToken, profile, done) {
-    console.log(profile);
-    User.findOrCreate( { facebookId: profile.id }, { username: profile.emails[0].value, email: profile.emails[0].value, photo: profile.photos[0].value, name: profile.displayName }, { options: { upsert: true } }, function (err, user) {
-      return done(err, user);
-    });
+  function(req, accessToken, refreshToken, profile, done) {
+    console.log(req);
+    if (!req.user) {
+      User.findOrCreate( { facebookId: profile.id }, { username: profile.emails[0].value, email: profile.emails[0].value, photo: profile.photos[0].value, name: profile.displayName }, { options: { upsert: true } }, function (err, user) {
+        return done(err, user);
+      });
+    }
   }
 ));
 passport.use(new TwitterStrategy({
     consumerKey: config.auth.twitter.key,
     consumerSecret: config.auth.twitter.secret,
-    callbackURL: "http://ggge.eu/auth/twitter/callback"
+    callbackURL: "http://ggge.eu/auth/twitter/callback", 
+    passReqToCallback: true
   },
-  function(token, tokenSecret, profile, done) {
-    console.log(profile);
-    User.findOrCreate( { twitterId: profile.id }, { username: profile.username, photo: profile.photos[0].value, name: profile.displayName }, { options: { upsert: true } } , function (err, user) {
-      return done(err, user);
-    });
+  function(req, token, tokenSecret, profile, done) {
+    console.log(req);
+    if (!req.user) {
+      User.findOrCreate( { twitterId: profile.id }, { username: profile.username, photo: profile.photos[0].value, name: profile.displayName }, { options: { upsert: true } } , function (err, user) {
+        return done(err, user);
+      });
+    }
   }
 ));
 
