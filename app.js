@@ -68,7 +68,7 @@ passport.use(new GoogleStrategy({
      });
     } else {
       console.log(req.user.username+ "is logged in and adds "+ profile.emails[0].value +" from "+profile.provider);
-      User.findOrCreate( { _id: mongoose.Types.ObjectId(req.user._id) }, { googleId: profile.id }, { options: { upsert: true } } , function (err, user) {
+      User.findByIdAndUpdate( req.user._id, { googleId: profile.id } , function (err, user) {
         return done(err, user);
       });
     }
