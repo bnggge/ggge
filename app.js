@@ -61,12 +61,13 @@ passport.use(new GoogleStrategy({
     passReqToCallback: true
   },
   function(req, accessToken, refreshToken, profile, done) {
-    console.log(req);
+    
     if (!req.user) {
       User.findOrCreate({ googleId: profile.id }, { username: profile.emails[0].value, email: profile.emails[0].value, photo: profile.photos[0].value, name: profile.displayName }, { options: { upsert: true } }, function (err, user) {
         return done(err, user);
      });
     } else {
+      console.log(req.user.username+ "is logged in and adds "+ profile.emails[0].value +" from "+profile.provider);
       User.findOrCreate( { username: req.user.username }, { googleId: profile.id }, { options: { upsert: true } } , function (err, user) {
         return done(err, user);
       });
