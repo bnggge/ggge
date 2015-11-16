@@ -9,10 +9,10 @@ var User = new Schema({
     photo: String,
     password: String,
     phone: String,
-    email: { type: String, unique: true },
-    twitterId: { type: String, unique: true },
-    facebookId: { type: String, unique: true },
-    googleId: { type: String, unique: true },
+    email: { type: String, index: true },
+    twitterId: { type: String },
+    facebookId: { type: String },
+    googleId: { type: String },
     createdAt: { type: Date, default: Date.now }
 });
 

@@ -66,6 +66,10 @@ passport.use(new GoogleStrategy({
       User.findOrCreate({ googleId: profile.id }, { username: profile.emails[0].value, email: profile.emails[0].value, photo: profile.photos[0].value, name: profile.displayName }, { options: { upsert: true } }, function (err, user) {
         return done(err, user);
      });
+    } else {
+      User.findOrCreate( { username: req.user.username }, { googleId: profile.id }, { options: { upsert: true } } , function (err, user) {
+        return done(err, user);
+      });
     }
   }
 ));
@@ -81,6 +85,10 @@ passport.use(new FacebookStrategy({
     console.log(req);
     if (!req.user) {
       User.findOrCreate( { facebookId: profile.id }, { username: profile.emails[0].value, email: profile.emails[0].value, photo: profile.photos[0].value, name: profile.displayName }, { options: { upsert: true } }, function (err, user) {
+        return done(err, user);
+      });
+    } else {
+      User.findOrCreate( { username: req.user.username }, { facebookId: profile.id }, { options: { upsert: true } } , function (err, user) {
         return done(err, user);
       });
     }
@@ -100,7 +108,7 @@ passport.use(new TwitterStrategy({
       });
     }
     else {
-      User.findOrCreate( { _id: req.user._id }, { twitterId: profile.id }, { options: { upsert: true } } , function (err, user) {
+      User.findOrCreate( { username: req.user.username }, { twitterId: profile.id }, { options: { upsert: true } } , function (err, user) {
         return done(err, user);
       });
     }
