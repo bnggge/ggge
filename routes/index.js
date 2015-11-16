@@ -14,7 +14,7 @@ router.get('/signup', function(req, res, next) {
 
 //TODO: Throw it in model.
 router.post('/signup', function(req, res, next) {
-    User.register(new User({ username : req.body.username, name: req.body.name, photo: req.body.photo, email: req.body.email, phone : req.body.phone }), req.body.password, function(err, account) {
+    User.register(new User({ username : req.body.username || req.body.email, name: req.body.name, photo: req.body.photo, email: req.body.email, phone : req.body.phone }), req.body.password, function(err, account) {
         if (err) {
             return res.render('signup', { user : req.user });
         }
