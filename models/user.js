@@ -15,7 +15,7 @@ var User = new Schema({
     googleId: String
 });
 
-User.plugin(passportLocalMongoose, {usernameField: 'username', usernameQueryFields: ['email', 'twitterId', 'facebookId', 'googleId'], populateFields: ['username', 'photo', 'name', 'twitterId', 'facebookId', 'googleId']});
+User.plugin(passportLocalMongoose, {usernameField: 'username', usernameQueryFields: ['email', 'twitterId', 'facebookId', 'googleId']});
 User.plugin(findOrCreate);
 
 module.exports = mongoose.model('User', User);
