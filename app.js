@@ -100,7 +100,7 @@ passport.use(new TwitterStrategy({
       });
     }
     else {
-      User.findOrCreate( { _id: req.user.id }, { twitterId: profile.id }, { options: { upsert: true } } , function (err, user) {
+      User.findOrCreate( { _id: req.user._id }, { twitterId: profile.id }, { options: { upsert: true } } , function (err, user) {
         return done(err, user);
       });
     }
