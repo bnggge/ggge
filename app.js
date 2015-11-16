@@ -88,7 +88,7 @@ passport.use(new FacebookStrategy({
         return done(err, user);
       });
     } else {
-      User.findOrCreate( { _id: 'ObjectId("'+req.user._id+'")'  }, { facebookId: profile.id }, { options: { upsert: true } } , function (err, user) {
+      User.findByIdAndUpdate( req.user._id, { facebookId: profile.id }, function (err, user) {
         return done(err, user);
       });
     }
@@ -107,7 +107,7 @@ passport.use(new TwitterStrategy({
       });
     }
     else {
-      User.findOrCreate( { _id: 'ObjectId("'+req.user._id+'")' }, { twitterId: profile.id }, { options: { upsert: true } } , function (err, user) {
+      User.findByIdAndUpdate( req.user._id, { twitterId: profile.id }, { options: { upsert: true } } , function (err, user) {
         return done(err, user);
       });
     }
