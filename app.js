@@ -68,7 +68,7 @@ passport.use(new GoogleStrategy({
      });
     } else {
       console.log(req.user.username+ "is logged in and adds "+ profile.emails[0].value +" from "+profile.provider);
-      User.findOrCreate( { username: req.user.username }, { googleId: profile.id }, { options: { upsert: true } } , function (err, user) {
+      User.findOrCreate( { _id: 'ObjectId("'+req.user._id+'")' }, { googleId: profile.id }, { options: { upsert: true } } , function (err, user) {
         return done(err, user);
       });
     }
@@ -83,13 +83,12 @@ passport.use(new FacebookStrategy({
     passReqToCallback: true
   },
   function(req, accessToken, refreshToken, profile, done) {
-    console.log(req);
     if (!req.user) {
       User.findOrCreate( { facebookId: profile.id }, { username: profile.emails[0].value, email: profile.emails[0].value, photo: profile.photos[0].value, name: profile.displayName }, { options: { upsert: true } }, function (err, user) {
         return done(err, user);
       });
     } else {
-      User.findOrCreate( { username: req.user.username }, { facebookId: profile.id }, { options: { upsert: true } } , function (err, user) {
+      User.findOrCreate( { _id: 'ObjectId("'+req.user._id+'")'  }, { facebookId: profile.id }, { options: { upsert: true } } , function (err, user) {
         return done(err, user);
       });
     }
@@ -102,14 +101,13 @@ passport.use(new TwitterStrategy({
     passReqToCallback: true
   },
   function(req, token, tokenSecret, profile, done) {
-    console.log(req);
     if (!req.user) {
       User.findOrCreate( { twitterId: profile.id }, { username: profile.username, photo: profile.photos[0].value, name: profile.displayName }, { options: { upsert: true } } , function (err, user) {
         return done(err, user);
       });
     }
     else {
-      User.findOrCreate( { username: req.user.username }, { twitterId: profile.id }, { options: { upsert: true } } , function (err, user) {
+      User.findOrCreate( { _id: 'ObjectId("'+req.user._id+'")' }, { twitterId: profile.id }, { options: { upsert: true } } , function (err, user) {
         return done(err, user);
       });
     }
