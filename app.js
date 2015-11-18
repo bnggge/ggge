@@ -27,7 +27,7 @@ app.set('view engine', 'hbs');
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.set('trust proxy', 1);
+app.enable('trust proxy');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 //app.use(cookieParser());
@@ -35,6 +35,8 @@ app.use(session({
     secret: config.sessionSecret,
     resave: false,
     saveUninitialized: true,
+    proxy: true,
+    cookie: {secure: true},
     store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 app.use(passport.initialize());
@@ -57,7 +59,7 @@ passport.use(User.createStrategy());
 passport.use(new GoogleStrategy({
     clientID: config.auth.google.id,
     clientSecret: config.auth.google.secret,
-    callbackURL: "http://ggge.eu/auth/google/callback",
+    callbackURL: "https://ggge.eu/auth/google/callback",
     passReqToCallback: true
   },
   function(req, accessToken, refreshToken, profile, done) {
@@ -77,7 +79,7 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
     clientID: config.auth.facebook.id,
     clientSecret: config.auth.facebook.secret,
-    callbackURL: "http://ggge.eu/auth/facebook/callback",
+    callbackURL: "https://ggge.eu/auth/facebook/callback",
     profileFields: ['id', 'email', 'picture', 'name', 'displayName'],
     enableProof: false,
     passReqToCallback: true
@@ -97,7 +99,7 @@ passport.use(new FacebookStrategy({
 passport.use(new TwitterStrategy({
     consumerKey: config.auth.twitter.key,
     consumerSecret: config.auth.twitter.secret,
-    callbackURL: "http://ggge.eu/auth/twitter/callback", 
+    callbackURL: "https://ggge.eu/auth/twitter/callback", 
     passReqToCallback: true
   },
   function(req, token, tokenSecret, profile, done) {
