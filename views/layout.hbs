@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="Helping to develop great products." />
+    <meta name="description" content="{{description}}" />
     <meta name="HandheldFriendly" content="True" />
     <title>{{title}}</title>
     <link rel="canonical" href="https://ggge.eu/" />
@@ -12,17 +12,17 @@
 
     <meta property="og:site_name" content="Benjamin Goegge" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Benjamin Goegge" />
-    <meta property="og:description" content="Helping startups to develop great products." />
+    <meta property="og:title" content="{{title}}" />
+    <meta property="og:description" content="{{description}}" />
     <meta property="og:url" content="https://ggge.eu/" />
 
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Benjamin Goegge" />
-    <meta name="twitter:description" content="Helping startups to develop great products." />
+    <meta name="twitter:title" content="{{title}}" />
+    <meta name="twitter:description" content="{{description}}" />
     <meta name="twitter:url" content="https://ggge.eu/" />
 
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel="stylesheet" href="//cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/material.min.css">
   </head>
   <body>
     <div class="navbar navbar-dark bg-primary">
@@ -57,7 +57,7 @@
         "@type": "Website",
         "publisher": "Benjamin Goegge",
         "url": "https://ggge.eu/",
-        "description": "Helping to develop great products."
+        "description": "{{description}}"
       }
     </script>
 <!--    <script src="../node_modules/systemjs/dist/system.src.js"></script>
@@ -67,9 +67,9 @@
         packages: {'app': {defaultExtension: 'js'}}
       });
       System.import('app/app');
-    </script>-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
+    <script src="/script/material.min.js"></script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
