@@ -6,6 +6,8 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "angular": "^1.4.7",
+    "angular2": "^2.0.0-alpha.46",
     "body-parser": "^1.14.1",
     "connect-mongo": "^0.8.2",
     "cookie-parser": "^1.4.0",
@@ -13,6 +15,7 @@
     "express": "~4.13.1",
     "express-session": "^1.12.1",
     "hbs": "^4.0.0",
+    "material-design-lite": "^1.0.6",
     "mongodb": "^2.0.48",
     "mongoose": "^4.2.5",
     "mongoose-findorcreate": "^0.1.2",
@@ -27,6 +30,7 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
+    "angular-material": "http://github.com/angular/bower-material/tarball/master",
     "tsd": "^0.6.5",
     "typescript": "^1.6.2"
   }
