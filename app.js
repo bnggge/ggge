@@ -36,7 +36,10 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     proxy: true,
-    cookie: {secure: true},
+    cookie: {
+              secure: true, 
+              maxAge: 604800000
+             },
     store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 app.use(passport.initialize());

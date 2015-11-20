@@ -68,7 +68,7 @@ router.get('/auth/facebook/callback',
 
 router.get('/ping', function(req, res){
     if (req.isAuthenticated()) {
-        res.status(200).send("pong!");
+        res.status(200).send(router.locals);
     } else {
         res.status(200).send("no pong!");
     }
