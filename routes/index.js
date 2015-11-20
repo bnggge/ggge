@@ -5,7 +5,7 @@ var router = express.Router();
 
 
 router.get('/', function (req, res) {
-    res.render('index', { user : req.user });
+    res.render('index', { title: 'Benjamin Goegge - Startup Services', description: 'Services to support startups' });
 });
 
 router.get('/signup', function(req, res) {
