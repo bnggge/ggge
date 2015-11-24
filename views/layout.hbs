@@ -20,14 +20,15 @@
     <meta name="twitter:title" content="{{title}}" />
     <meta name="twitter:description" content="{{description}}" />
     <meta name="twitter:url" content="https://ggge.eu/" />
-
+    <link rel="alternate" hreflang="en" href="https://ggge.eu/" />
+    <link rel="alternate" hreflang="de" href="https://ggge.de/" />
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" href="/stylesheets/material.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Palanquin:400,600" />
   </head>
   <body>
-    <div class="mdl-layout mdl-js-layout">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       {{>nav}}
       {{{body}}}
     </div>    
