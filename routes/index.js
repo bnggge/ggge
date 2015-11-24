@@ -70,7 +70,13 @@ router.get('/ping', function(req, res){
     if (req.isAuthenticated()) {
         res.status(200).send(router.locals);
     } else {
-        res.status(200).send("no pong!");
+        if (req.hostname == 'ggge.de') { 
+            res.status(200).send("Kein Pong!");
+        } else if (req.hostname == 'ggge.eu') {
+            res.status(200).send("No pong!");
+        } else {
+            res.status(200).send("?? pong!");
+        }
     }
 });
 
