@@ -2,7 +2,7 @@ var express = require('express');
 var passport = require('passport');
 var User = require('../models/user');
 var router = express.Router();
-var Page = require('./models/page');
+var Page = require('../models/page');
 var mongoose = require('mongoose');
 
 router.use(function(req, res, next){
