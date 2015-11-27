@@ -13,6 +13,7 @@ var User = new Schema({
     twitterId: { type: String },
     facebookId: { type: String },
     googleId: { type: String },
+    isAdmin: { type: Boolean, default: false },
     createdAt: { type: Date, default: Date.now }
 });
 

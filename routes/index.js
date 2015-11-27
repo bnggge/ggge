@@ -2,11 +2,62 @@ var express = require('express');
 var passport = require('passport');
 var User = require('../models/user');
 var router = express.Router();
+var Page = require('./models/page');
+var mongoose = require('mongoose');
 
+router.use(function(req, res, next){
+     if (req.hostname == 'ggge.de') { 
+         res.locals.locale = 'de';
+         if (req.acceptsLanguages('en') && !req.acceptsLanguages('de')){
+             res.locals.recommendedLocale = 'en';
+         }
+     } else if (req.hostname == 'ggge.eu') {
+         res.locals.locale = 'en';
+         if (req.acceptsLanguages('de') && !req.acceptsLanguages('en')){
+             res.locals.recommendedLocale = 'de';
+         }
+     } else {
+         console.log('Could not resolve hostname:'+req.hostname);
+     }
+     next();
+});
 
 router.get('/', function (req, res) {
-    res.render('index', { title: 'Benjamin Goegge - Startup Services', description: 'Services to support startups' });
+    res.render('index', { page: req.app.locals.site.index, locals: res.locals });
 });
+
+router.get('/impr(int)?(essum)?', function (req, res) {
+    res.render('imprint', { page: req.app.locals.site.imprint, locals: res.locals });
+});
+
+router.get('/new', function(req, res) {
+    if (req.isAuthenticated()) {
+        res.render('new', {});
+    } else {
+        res.redirect('/signup');
+    }});
+
+
+router.post('/new', function(req, res) {
+    if (req.isAuthenticated() && req.user.isAdmin) {
+        Page.create({ 
+            en: req.body.en,
+            de: req.body.de,
+            images: req.body.images,
+            attachments: req.body.attachments,
+            thumbnail: req.body.thumbnail,
+            author: mongoose.mongo.ObjectId(req.user._id), 
+            status: req.body.status, 
+            nav: req.body.nav, 
+            template: req.body.template, 
+            parent : req.body.parent,
+            type: req.body.type }), 
+        function(err, page) {
+            if (err) res.redirect('/new');
+            req.app.locals.pages.push(page);
+        }} else {
+            res.redirect('/signup');
+        }});
 
 router.get('/signup', function(req, res) {
     res.render('signup', { });
@@ -31,6 +82,7 @@ router.get('/login', function(req, res) {
 
 router.post('/login', passport.authenticate('local'), function(req, res, next) {
     res.redirect('/');
+    next();
 });
 
 router.get('/logout', function(req, res) {

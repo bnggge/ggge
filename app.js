@@ -21,6 +21,7 @@ var app = express();
 
 // view engine setup
 hbs.registerPartials(__dirname + '/views/partials');
+hbs.localsAsTemplateData(app);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
@@ -54,7 +55,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 //app.use('/users', users);
-
+var Page = require('./models/page');
+app.locals.pages = Page.find(function(err, docs){
+  if (err) {
+    console.log(err);
+  } else {
+    return docs;
+  }
+});
+app.locals.site = require('./data/site');
+hbs.registerHelper('de', function(de, en){
+  if(this.locals.language == 'de'){
+    return de;
+  } else {
+    return en;
+  }
+});
 var User = require('./models/user');
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
