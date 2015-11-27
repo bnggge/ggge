@@ -1,27 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{locals.language}}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="{{description}}" />
+    <meta name="description" content="{{de page.de.description page.en.description}}" />
     <meta name="HandheldFriendly" content="True" />
-    <title>{{title}}</title>
-    <link rel="canonical" href="https://ggge.eu/" />
+    <title>{{de page.de.title page.en.title}}</title>
+    <link rel="canonical" href="{{de page.de.url page.en.url}}" />
     <meta name="referrer" content="origin" />
 
-    <meta property="og:site_name" content="Benjamin Goegge" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="{{title}}" />
-    <meta property="og:description" content="{{description}}" />
-    <meta property="og:url" content="https://ggge.eu/" />
+    <meta property="og:site_name" content="ggge - Benjamin Goegge" />
+    <meta property="og:type" content="{{page.type}}" />
+    <meta property="og:locale" content="{{de de_DE en_US}}" />
+    <meta property="og:title" content="{{de page.de.title page.en.title}}" />
+    <meta property="og:description" content="{{de page.de.description page.en.description}}" />
+    <meta property="og:url" content="{{de page.de.url page.en.url}}" />
+    {{#if page.photos[0]}}<meta property="og:image" content="{{page.photos[0]}}" />{{/if}}
+    <meta property="fb:app_id" content="1010860192270803" />
 
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="{{title}}" />
-    <meta name="twitter:description" content="{{description}}" />
-    <meta name="twitter:url" content="https://ggge.eu/" />
-    <link rel="alternate" hreflang="en" href="https://ggge.eu/" />
-    <link rel="alternate" hreflang="de" href="https://ggge.de/" />
+    <meta name="twitter:title" content="{{de page.de.title page.en.title}}" />
+    <meta name="twitter:description" content="{{de page.de.description page.en.description}}" />
+    <meta name="twitter:url" content="{{de page.de.url page.en.url}}" />
+    <link rel="alternate" hreflang="en" href="{{page.en.url}}" />
+    <link rel="alternate" hreflang="de" href="{{page.de.url}}" />
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" href="/stylesheets/material.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -31,15 +34,16 @@
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       {{>nav}}
       {{{body}}}
+      {{>footer}}
     </div>    
     
     <script type="application/ld+json">
       {
         "@context": "http://schema.org",
-        "@type": "Website",
+        "@type": "{{page.type}}",
         "publisher": "Benjamin Goegge",
-        "url": "https://ggge.eu/",
-        "description": "{{description}}"
+        "url": "{{de page.de.url page.en.url}}",
+        "description": "{{de page.de.description page.en.description}}"
       }
     </script>
 <!--    <script src="../node_modules/systemjs/dist/system.src.js"></script>
@@ -58,7 +62,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-45009016-2', 'auto');
+      ga('create', '{{{de UA-45009016-1 UA-45009016-2}}}', 'auto');
       ga('send', 'pageview');
     </script>
   </body>
