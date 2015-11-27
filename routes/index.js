@@ -7,12 +7,12 @@ var mongoose = require('mongoose');
 
 router.use(function(req, res, next){
      if (req.hostname == 'ggge.de') { 
-         res.locals.locale = 'de';
+         res.locals.language = 'de';
          if (req.acceptsLanguages('en') && !req.acceptsLanguages('de')){
              res.locals.recommendedLocale = 'en';
          }
      } else if (req.hostname == 'ggge.eu') {
-         res.locals.locale = 'en';
+         res.locals.language = 'en';
          if (req.acceptsLanguages('de') && !req.acceptsLanguages('en')){
              res.locals.recommendedLocale = 'de';
          }
