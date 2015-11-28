@@ -23,7 +23,7 @@ var site = {
         slug: '',
         name: 'ggge.de',
         title: 'Dienstleistungen für Startups in Berlin',
-        url: 'https://ggge.eu',
+        url: 'https://ggge.de',
         description: 'Benjamin Gögge unterstützt Startups in Berlin bei der Konzeption, Umsetzung und Optimierung ihrer digitalen Produkte.',
         content: '',
         tags: [''],
