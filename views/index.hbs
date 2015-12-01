@@ -1,6 +1,62 @@
+{{#>nav}}
+<div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+      <a href="#overview" class="mdl-layout__tab is-active">{{de 'Übersicht' 'Overview'}}</a>
+      <a href="#development" class="mdl-layout__tab">{{de 'Entwicklung' 'Development'}}</a>
+      <a href="#product" class="mdl-layout__tab">{{de 'Produktberatung' 'Product consulting'}}</a>
+      <a href="#marketing" class="mdl-layout__tab">Marketing</a>
+      <a href="#about" class="mdl-layout__tab">{{de 'Über mich' 'About me'}}</a>
+      <a href="#clients" class="mdl-layout__tab">{{de '' ''}}</a>
+    </div>
+{{/nav}}
+
 <main class="mdl-layout__content">
+     
+    <section class="mdl-layout__tab-panel is-active" id="overview">
+      <div class="page-content">
+            <div id="cards">
+                  
+            </div>
+      
+      </div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="development">
+      <div class="page-content">
+            <div id="skills" class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                  <div class="mdl-tabs__tab-bar">
+                  <a href="#frontend" class="mdl-tabs__tab">{{de 'Entwicklung' 'Development'}}</a>
+                  <a href="#backend" class="mdl-tabs__tab">{{de 'Entwicklung' 'Development'}}</a>
+                  <a href="#cms" class="mdl-tabs__tab">CMS</a>
+                  </div>
+                  <div class="mdl-tabs__panel is-active" id="frontend">
+                  <p>First tab's content.</p>
+                  </div>
+                  <div class="mdl-tabs__panel" id="backend">
+                  <p>Second tab's content.</p>
+                  </div>
+                  <div class="mdl-tabs__panel" id="cms">
+                  <p>Third tab's content.</p>
+                  </div>
+            </div>
+      </div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="product">
       <div class="page-content">
             
+      </div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="marketing">
+      <div class="page-content">
             
       </div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="about">
+      <div class="page-content">
+            
+      </div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="clients">
+      <div class="page-content">
+      
+      </div>
+    </section>
 </main>

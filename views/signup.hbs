@@ -1,28 +1,40 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-<div class="container">
-        <form class="form-signin" action="/signup" method="post" autocomplete="on">
-            <h2 class="form-signin-heading text-center">Signup</h2>
+{{#>nav}}
 
-            <label for="username" class="sr-only">Username</label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="jdoe">
+{{/nav}}
+<h1></h1>
+<p></p>
+<div class="signup">
+        <form action="/signup" method="post" autocomplete="on">
+            <h2 >Signup</h2>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                
+            <label class="mdl-textfield__label" for="email">E-mail</label>
+            <input type="email" id="email" name="email" class="mdl-textfield__input" placeholder="john@doe.com" required autofocus>
+            <strong><abbr title="required">*</abbr></strong>
 
-            <label for="name" class="sr-only">Firstname</label>
-            <input type="text" id="firstname" name="firstname" class="form-control" placeholder="John Doe">
+            <label class="mdl-textfield__label" for="password" >Password</label>
+            <input type="password" name="password" id="password" class="mdl-textfield__input" placeholder="*********" required>
+            <strong><abbr title="required">*</abbr></strong>
+            
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="newsletter">
+                <input type="checkbox" id="newsletter" class="mdl-switch__input">
+                <span class="mdl-switch__label">{{de 'Für Newsletter anmelden' 'Signup for newsletter'}}</span>
+            </label>
+            
+            <label class="mdl-textfield__label" for="username">Username</label>
+            <input type="text" id="username" name="username" class="mdl-textfield__input" placeholder="jdoe">
 
-            <label for="photo" class="sr-only">Photo (URL)</label>
-            <input type="url" id="photo" name="photo" class="form-control" placeholder="http://www.example.com/photo.jpg" >
+            <label class="mdl-textfield__label" for="name" >Firstname</label>
+            <input type="text" id="firstname" name="firstname" class="mdl-textfield__input" placeholder="John Doe">
 
-            <label for="email" class="sr-only">E-mail</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="john@doe.com" required autofocus>
+            <label class="mdl-textfield__label" for="photo" >Photo (URL)</label>
+            <input type="url" id="photo" name="photo" class="mdl-textfield__input" placeholder="http://www.example.com/photo.jpg" >
+            <label class="mdl-textfield__label" for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" class="mdl-textfield__input" placeholder="+49 30 123456"  >
+            
 
-            <label for="phone" class="sr-only">Phone</label>
-            <input type="tel" id="phone" name="phone" class="form-control" placeholder="+49 30 123456"  >
-
-            <label for="password" class="sr-only">Password</label>
-            <input type="password" name="password" id="password" class="form-control" placeholder="*********" required>
-
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Signup</button>
+            </div>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">Signup</button>
           </form>
 
           <div class="row">
