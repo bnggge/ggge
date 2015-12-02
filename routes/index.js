@@ -60,14 +60,14 @@ router.post('/new', function(req, res) {
         }});
 
 router.get('/signup', function(req, res) {
-    res.render('signup', { });
+    res.render('signup', { locals: res.locals  });
 });
 
 //TODO: Throw it in model.
 router.post('/signup', function(req, res) {
     User.register(new User({ username : req.body.username || req.body.email, name: req.body.name, photo: req.body.photo, email: req.body.email, phone : req.body.phone }), req.body.password, function(err, account) {
         if (err) {
-            return res.render('signup', { user : req.user });
+            return res.render('signup', { user : req.user, locals: res.locals });
         }
 
         passport.authenticate('local')(req, res, function () {
@@ -77,7 +77,7 @@ router.post('/signup', function(req, res) {
 });
 
 router.get('/login', function(req, res) {
-    res.render('login', { user : req.user });
+    res.render('login', { user : req.user, locals: res.locals });
 });
 
 router.post('/login', passport.authenticate('local'), function(req, res, next) {
