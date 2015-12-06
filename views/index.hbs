@@ -2,9 +2,9 @@
 <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
       <a href="#overview" class="mdl-layout__tab is-active">{{de 'Übersicht' 'Overview'}}</a>
       <a href="#development" class="mdl-layout__tab">{{de 'Entwicklung' 'Development'}}</a>
-      <a href="#product" class="mdl-layout__tab">{{de 'Produktberatung' 'Product consulting'}}</a>
+      <!--<a href="#product" class="mdl-layout__tab">{{de 'Produktberatung' 'Product consulting'}}</a>
       <a href="#marketing" class="mdl-layout__tab">Marketing</a>
-      <a href="#projects" class="mdl-layout__tab">{{de 'Projekte' 'Projects'}}</a>
+      <a href="#projects" class="mdl-layout__tab">{{de 'Projekte' 'Projects'}}</a>-->
       <a href="#about" class="mdl-layout__tab">{{de 'Über mich' 'About me'}}</a>
     </div>
 {{/nav}}
@@ -16,44 +16,48 @@
             <div id="cards" class="mdl-grid">
                   <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--2dp">
                         <div class="mdl-card__title">
-                              <div class="mdl-card__title-text">{{de 'Startup Dienstleistungen' 'Startup services'}}</div>
-                              <div class="mdl-card__subtitle-text">{{de 'von Benjamin Gögge' 'by Benjamin Goegge'}}</div>     
+                              <div class="mdl-card__title-text">{{de 'Startup Dienstleistungen' 'Startup services'}}</div>     
                         </div>
-                        <div class="mdl-card__supporting-text">{{de 'Seit 2002 unterstütze ich Teams unterschiedlicher Größe bei der Erstellung von Internetdiensten. Ich validiere Ideen und entwickle sie gemeinsam mit meinen Auftraggebern weiter.' 'I support teams of several sizes with the creation of internet services. I '}}</div>
-                        <div class="mdl-card__actions"><a href="mailto:bn@ggge.de">{{de 'Anfrage senden' 'Send request'}}</a></div>
+                        <div class="mdl-card__supporting-text mdl-card--border">{{de 'Seit 2002 unterstütze ich Teams unterschiedlicher Größe bei der Erstellung von Internetdiensten. Ich validiere Produkte und entwickle sie gemeinsam mit meinen Auftraggebern weiter. Mein Einsatzgebiet reicht von der Beratung über die aktive Unterstützung von einzelnen Teammitgliedern bis hin zur kompletten Umsetzung von Projekten.' 'I support teams of several sizes with the creation of internet services. I validate products and develop them together with the team. My tasks usually span the range from consulting to complete implementation of projects.'}}</div>
+                        <div class="mdl-card__actions"><a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="mailto:bn@ggge.de">{{de 'Anfrage senden' 'Send request'}}</a></div>
                    </div>
                    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-card mdl-shadow--2dp">
                         <div class="mdl-card__title">
-                              <div class="mdl-card__title-text">{{de '' ''}}</div>
-                              <div class="mdl-card__subtitle-text">{{de '' ''}}</div>     
+                              <div class="mdl-card__title-text">{{de 'Entwicklung' 'Development'}}</div>     
+                        </div>
+                        <div class="mdl-card__supporting-text mdl-card--border">{{de 'Ich entwickle neue Projekte auf Basis von Node.js, Angular und ähnlichen Technologien. Außerdem unterstütze ich Kunden bei der Weiterentwicklung von Projekten, die auf Ruby (on Rails) oder PHP basieren. Mein Fokus liegt auf der Entwicklung von Prototypen, MVP und der Implementierung von Analyse- und Optimierungssystemen.' 'I develop new projects on the basis of Node.js, Angular and similar technologies. I support my clients to improve their existing projects based on Ruby (on Rails) and PHP. I focus on building prototypes and MVP. I help clients implementings tools for tracking and otpimizing their apps and websites.'}}</div>
+                        <div class="mdl-card__actions"><a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" href="#development">{{de 'Mehr erfahren' 'Learn more'}}</a></div>
+                   </div>
+                   <!--<div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title">
+                              <div class="mdl-card__title-text">{{de 'Produktberatung' 'Product advice'}}</div>    
                         </div>
                         <div class="mdl-card__supporting-text">{{de '' ''}}</div>
-                        <div class="mdl-card__actions">{{de '' ''}}</div>
+                        <div class="mdl-card__actions"><a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" href="#product">{{de 'Mehr erfahren' 'Learn more'}}</a>}</div>
                    </div>
                    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-card mdl-shadow--2dp">
                         <div class="mdl-card__title">
-                              <div class="mdl-card__title-text">{{de '' ''}}</div>
-                              <div class="mdl-card__subtitle-text">{{de '' ''}}</div>     
+                              <div class="mdl-card__title-text">{{de 'Marketing' 'Marketing'}}</div>     
                         </div>
                         <div class="mdl-card__supporting-text">{{de '' ''}}</div>
-                        <div class="mdl-card__actions">{{de '' ''}}</div>
+                        <div class="mdl-card__actions"><a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" href="#marketing">{{de 'Mehr erfahren' 'Learn more'}}</a></div>
                    </div>
                    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-card mdl-shadow--2dp">
                         <div class="mdl-card__title">
-                              <div class="mdl-card__title-text">{{de '' ''}}</div>
-                              <div class="mdl-card__subtitle-text">{{de '' ''}}</div>     
+                              <div class="mdl-card__title-text">{{de 'Twitter' 'Twitter'}}</div>
                         </div>
                         <div class="mdl-card__supporting-text">{{de '' ''}}</div>
-                        <div class="mdl-card__actions">{{de '' ''}}</div>
+                        <div class="mdl-card__actions"><a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" href="https://twitter.com/bnggge">{{de 'Jetzt folgen' 'Follow now'}}</a></div>
                    </div>
+                   -->
                    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-card mdl-shadow--2dp">
                         <div class="mdl-card__title">
-                              <div class="mdl-card__title-text">{{de '' ''}}</div>
-                              <div class="mdl-card__subtitle-text">{{de '' ''}}</div>     
+                              <div class="mdl-card__title-text">{{de 'Über mich' 'About me'}}</div>
                         </div>
-                        <div class="mdl-card__supporting-text">{{de '' ''}}</div>
-                        <div class="mdl-card__actions">{{de '' ''}}</div>
+                        <div class="mdl-card__supporting-text">{{de 'Nach einer kaufmännischen Ausbildung habe ich neun Jahre für das ZDF neun Jahre Online-Projekte realisiert.' ''}}</div>
+                        <div class="mdl-card__actions"><a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" href="about">{{de 'Mehr erfahren' 'Learn more'}}</a></div>
                    </div>
+                   
             </div>
       </div>
     </section>
@@ -61,23 +65,31 @@
       <div class="page-content">
             <div id="skills" class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
                   <div class="mdl-tabs__tab-bar">
-                  <a href="#frontend" class="mdl-tabs__tab">{{de 'Front-End' 'Frontend'}}</a>
+                  <a href="#frontend" class="mdl-tabs__tab">{{de 'Front-End' 'Front end'}}</a>
                   <a href="#backend" class="mdl-tabs__tab">{{de 'Back-End' 'Back end'}}</a>
                   <a href="#cms" class="mdl-tabs__tab">CMS</a>
+                  <a href="#google" class="mdl-tabs__tab">Google Services</a>
+                  <a href="#email" class="mdl-tabs__tab">{{de 'E-Mail-Automatisierung' 'Email automation'}}</a>
                   </div>
                   <div class="mdl-tabs__panel is-active" id="frontend">
-                  <p>First tab's content.</p>
+                  <p>{{de 'Back-End' 'Back end'}}</p>
                   </div>
                   <div class="mdl-tabs__panel" id="backend">
-                  <p>Second tab's content.</p>
+                  <p>{{de 'Back-End' 'Back end'}}</p>
                   </div>
                   <div class="mdl-tabs__panel" id="cms">
-                  <p>Third tab's content.</p>
+                  <p>{{de 'Back-End' 'Back end'}}</p>
+                  </div>
+                  <div class="mdl-tabs__panel" id="google">
+                  <p>{{de 'Back-End' 'Back end'}}</p>
+                  </div>
+                  <div class="mdl-tabs__panel" id="email">
+                  <p>{{de 'Back-End' 'Back end'}}</p>
                   </div>
             </div>
       </div>
     </section>
-    <section class="mdl-layout__tab-panel" id="product">
+   <!-- <section class="mdl-layout__tab-panel" id="product">
       <div class="page-content">
             
       </div>
@@ -86,16 +98,11 @@
       <div class="page-content">
             
       </div>
-    </section>
-    <section class="mdl-layout__tab-panel" id="clients">
-      <div class="page-content">
-      
-      </div>
-    </section>
+    </section> -->
     <section class="mdl-layout__tab-panel" id="about">
       <div class="page-content">
             
       </div>
     </section>
-    
+    {{>footer}}
 </main>
