@@ -65,7 +65,7 @@ app.locals.pages = Page.find(function(err, docs){
 });
 app.locals.site = require('./data/site');
 hbs.registerHelper('de', function(de, en){
-  if(this.locals.language == 'de'){
+  if(this.locals.language && this.locals.language == 'de'){
     return de;
   } else {
     return en;
